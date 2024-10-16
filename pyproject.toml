@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python3"
-version = "1.0.1"
+version = "1.0.2"
 description = "Hack to deal with a missing python3 alias on windows"
 authors = ["Matthew Martin <matthewdeanmartin@gmail.com>"]
 keywords = ["python3", "alias" ]

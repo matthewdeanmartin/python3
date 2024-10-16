@@ -23,7 +23,7 @@ class CustomInstall(_install):
 
 setup(
     name="python3-alias",
-    version="1.0.1",
+    version="1.0.2",
     description="Hack to deal with a missing python3 alias on Windows",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
