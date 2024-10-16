@@ -1,5 +1,8 @@
 [tool.poetry]
 name = "python3-alias"
+packages = [
+    { include = "python3" }
+]
 version = "1.0.3"
 description = "Hack to deal with a missing python3 alias on Windows"
 authors = ["Matthew Martin <matthewdeanmartin@gmail.com>"]
