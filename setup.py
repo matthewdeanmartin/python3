@@ -22,7 +22,7 @@ class CustomInstall(_install):
         return shutil.which('python3') is not None
 
 setup(
-    name="python3",
+    name="python3-alias",
     version="1.0.0",
     description="Hack to deal with a missing python3 alias on Windows",
     author="Matthew Martin",
