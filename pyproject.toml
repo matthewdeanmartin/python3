@@ -45,6 +45,7 @@ python3 = 'python3.__main__:run'
 
 [tool.poetry.dependencies]
 python = ">=3.8"
+setuptools = "*"
 
 [tool.poetry.dev-dependencies]
 # types

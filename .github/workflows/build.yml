@@ -22,12 +22,12 @@ jobs:
         pipx install pylint && pipx install pre-commit && pipx install poetry
 
     - name: Install Dependencies
-      run: poetry install --with dev
+      run: pip install setuptools wheel pylint black mypy ruff
 
     - name: Run Makefile
       run: make check
     - name: Run make
-      run: poetry run make publish
+      run: python setup.py sdist bdist_wheel
     - name: Upload Package
       uses: actions/upload-artifact@v4.3.6
       with:
