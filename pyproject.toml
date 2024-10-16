@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python3"
-version = "1.0.0"
+version = "1.0.1"
 description = "Hack to deal with a missing python3 alias on windows"
 authors = ["Matthew Martin <matthewdeanmartin@gmail.com>"]
 keywords = ["python3", "alias" ]
@@ -109,14 +109,15 @@ exclude = '''
 #script = "build.py"
 
 [build-system]
-requires = ["poetry>=0.12",
-   # "cython>=3.0.0", "setuptools>=65.6.3", "wheel>=0.29.0"
+requires = ["setuptools>=65.6.3"
+    # "poetry>=0.12", "cython>=3.0.0", , "wheel>=0.29.0"
 ]
-build-backend = "poetry.masonry.api"
+build-backend = "setuptools.build_meta"
+# build-backend = "poetry.masonry.api"
 
 # Cython with setup.py, If we go back to setup.py again
 #requires = ["setuptools>=0.67.4.0", "Cython>=0.29.33"]
-#build-backend = "setuptools.build_meta"
+
 
 #mypyc
 #[build-system]
