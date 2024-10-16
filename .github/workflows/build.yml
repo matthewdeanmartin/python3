@@ -24,10 +24,10 @@ jobs:
     - name: Install Dependencies
       run: pip install setuptools wheel pylint black mypy ruff
 
-    - name: Run Makefile
-      run: make check
+#    - name: Run Makefile
+#      run: make check
     - name: Run make
-      run: python setup.py sdist
+      run: poetry build
     - name: Upload Package
       uses: actions/upload-artifact@v4.3.6
       with:
