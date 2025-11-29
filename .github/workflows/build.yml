@@ -10,48 +10,10 @@ jobs:
     - uses: actions/checkout@v4.1.7
     - uses: actions/setup-python@v5.1.1
       with:
-        python-version: '3.12'
+        python-version: '3.14'
           # cache: 'pipenv' # caching pipenv dependencies
-    - name: Install poetry and pipx
+    - name: Install package managers
       run: |
-        pip install poetry && pip install pipx
-
-    - name: Install global dependencies
-      run: |
-        pipx install isort && pipx install black && pipx install bandit && \
-        pipx install pylint && pipx install pre-commit && pipx install poetry
-
-    - name: Install Dependencies
-      run: pip install setuptools wheel pylint black mypy ruff
-
-#    - name: Run Makefile
-#      run: make check
-    - name: Run make
-      run: poetry build
-    - name: Upload Package
-      uses: actions/upload-artifact@v4.3.6
-      with:
-        name: packages
-        path: dist/
-        if-no-files-found: error
-        retention-days: 1
-
-
-  pypi-publish:
-    name: Upload release to PyPI
-    runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/python3-alias
-    permissions:
-      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
-    # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    steps:
-    - name: Get packages
-      uses: actions/download-artifact@v4.1.8
-      with:
-        name: packages
-        path: dist/
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.9.0
-    needs: build
+        pip install pipx && pip install uv && pipx install uv && uv sync
+    - name: Run Makefile
+      run: make check

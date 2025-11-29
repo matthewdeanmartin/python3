@@ -1,12 +1,14 @@
-[tool.poetry]
+[project]
 name = "python3-alias"
-packages = [
-    { include = "python3" }
-]
 version = "1.0.3"
 description = "Hack to deal with a missing python3 alias on Windows"
-authors = ["Matthew Martin <matthewdeanmartin@gmail.com>"]
-keywords = ["python3", "alias" ]
+authors = [
+    { name = "Matthew Martin", email = "matthewdeanmartin@gmail.com" },
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["python3", "alias"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "License :: OSI Approved :: MIT License",
@@ -18,70 +20,22 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
-include = [
-    "python3/**/*.py",
-    "python3/**/*.md",
-    "python3/**/*.txt",
-    "python3/**/*.html",
-    "python3/**/*.jinja",
-    "python3/**/*.pyd",
-    "python3/**/*.so",
-    "python3/py.typed",
-]
-exclude = [
-]
-license = "MIT"
-readme = "README.md"
-repository = "https://github.com/matthewdeanmartin/python3"
-homepage = "https://github.com/matthewdeanmartin/python3"
-documentation = "https://github.com/matthewdeanmartin/python3"
+dependencies = []
 
-
-
-[tool.poetry.urls]
+[project.urls]
 "Bug Tracker" = "https://github.com/matthewdeanmartin/python3/issues"
 "Change Log" = "https://github.com/matthewdeanmartin/python3/blob/main/CHANGELOG.md"
 
-[tool.poetry.scripts]
+[project.scripts]
 python3 = 'python3.__main__:run'
 
-[tool.poetry.dependencies]
-python = ">=3.8"
-# setuptools = "*"
 
-[tool.poetry.dev-dependencies]
-# types
-mypy = ">=1.8.0"
-
-# linting
-pylint = ">=3.0.2"
-ruff = "*"
-
-# testing
-pytest = ">=7.4.3"
-pytest-cov = ">=4.1.0"
-pytest-snapshot = "*"
-pytest-asyncio = "*"
-pytest-network= "*"
-time-machine = "*"
-pytest-mock =">=3.14.0"
-tox = "*"
-
-# build tools
-black = ">=23.11.0"
-
-pre-commit = ">=3.5.0"
-
-# docs
-#interrogate = ">=1.5.0"
-#pydoctest = ">=0.1.22"
-#pdoc3 = ">=0.10.0"
-#mdformat = ">=0.7.17"
-#linkcheckmd = ">=1.4.0"
-#codespell = ">=2.2.6"
-#pyenchant = ">=3.2.2"
-metametameta = ">=0.1.0"
+[dependency-groups]
+dev = ["mypy>=1.8.0", "pylint>=3.0.2", "ruff",
+    "pytest>=7.4.3", "pytest-cov>=4.1.0",
+     "tox", "black>=23.11.0", "pre-commit>=3.5.0", "metametameta>=0.1.0"]
 
 [tool.black]
 line-length = 120
@@ -106,29 +60,6 @@ exclude = '''
                      # the root of the project
 )
 '''
-#
-#[tool.poetry.build]
-#generate-setup-file = false
-#script = "build.py"
-
-[build-system]
-requires = [ "poetry>=0.12"
-# "setuptools>=65.6.3", "cython>=3.0.0", "wheel>=0.29.0"
-]
-#build-backend = "setuptools.build_meta"
-build-backend = "poetry.masonry.api"
-
-# Cython with setup.py, If we go back to setup.py again
-#requires = ["setuptools>=0.67.4.0", "Cython>=0.29.33"]
-
-#mypyc
-#[build-system]
-#requires = [
-#    "setuptools >= 40.6.2",
-#    "wheel >= 0.30.0",
-#    "mypy >= 1.7.1"
-#]
-#build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -144,14 +75,7 @@ norecursedirs = ["vendor", "scripts"]
 #	slow: marks tests as slow (deselect with '-m "not slow"')
 #	fast: marks tests as fast (deselect with '-m "not fast"')
 
-[tool.isort]
-default_section = "THIRDPARTY"
-force_grid_wrap = 0
-include_trailing_comma = true
-known_first_party = ["dedlin"]
-line_length = 120
-multi_line_output = 3
-use_parentheses = true
+
 
 [tool.ruff]
 line-length = 320
@@ -165,7 +89,7 @@ select = ["E", "F",
 ignore = [
     "E722",
     # only track structural problems with docstrings, not whitespace, nor missing
-    "D200", "D212", "D415","D411", "D205","D102", "D103", "D100","D107","D101","D104","D105",
+    "D200", "D212", "D415", "D411", "D205", "D102", "D103", "D100", "D107", "D101", "D104", "D105",
     "UP007", "UP038", # Not sure if | is well supported in lowever versions of python
 ]
 
@@ -206,59 +130,6 @@ target-version = "py311"
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.scriv]
-version = "literal: pyproject.toml: tool.poetry.version"
-format = "md"
-main_branches = "master, main, develop, dev"
-
-[mypy]
-warn_return_any = true
-warn_unused_configs = true
-strict = true
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-strict_optional = true
-warn_redundant_casts = true
-warn_no_return = true
-
-[mypy.cython]
-ignore_missing_imports = true
-
-
-[mypy.markdownify]
-ignore_missing_imports = true
-
-
-[tool.cli-tools]
-# python deps, don't really need to check, unless we make these optional and allow for pipx installation
-mypy = { version = ">=1.8.0" }
-pylint = { version = ">=3.0.2" }
-ruff = {  version = ">=0.1.9" }
-black = {  version = ">=23.11.0" }
-pygount = {  version = "*" }
-
-[tool.bug_trail]
-app_name= "python3"
-app_author= "matthewdeanmartin"
-source_folder = "python3"
-#ctags_file = "fish_tank.tags"
-
-
-[tool.python3]
-folder_path = "."
-python_version = "3.10"
-docstring_style = "google"
-similarity_cuffoff_percent = "80"
-
 
 [tool.network-status]
 urls = []
-
-
-[tool.bug-trail]
-app_name = "python3"
-app_author = "matthewdeanmartin"
-report_folder = "logs"
-database_path = "bug_trail.db"
