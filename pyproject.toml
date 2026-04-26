@@ -46,7 +46,7 @@ include = [
     "web/**",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "hatch",
     "mypy>=1.8.0",
@@ -54,10 +54,12 @@ dev = [
     "ruff",
     "pytest>=7.4.3",
     "pytest-cov>=4.1.0",
-     "tox",
+    "tox",
     "black>=23.11.0",
     "pre-commit>=3.5.0",
-    "metametameta>=0.1.0"]
+    "metametameta>=0.1.0",
+    "build",
+]
 
 [tool.black]
 line-length = 120

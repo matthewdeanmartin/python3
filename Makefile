@@ -1,24 +1,24 @@
 .EXPORT_ALL_VARIABLES:
 # Get changed files
 
-# if you wrap everything in uv run, it runs slower.
+# if you wrap everything in python -m, it runs from the venv when active.
 ifeq ($(origin VIRTUAL_ENV),undefined)
-    VENV := uv run
+    VENV := python -m
 else
-    VENV :=
+    VENV := python -m
 endif
 
-uv.lock: pyproject.toml
+install: pyproject.toml
 	@echo "Installing dependencies"
-	@uv sync --all-extras
+	@pip install -e ".[dev]"
 
 
 # tests can't be expected to pass if dependencies aren't installed.
 # tests are often slow and linting is fast, so run tests on linted code.
-test: uv.lock
+test: install
 	@echo "Running unit tests"
 	# $(VENV) pytest --doctest-modules python3
-	# $(VENV) python -m unittest discover
+	# python -m unittest discover
 	$(VENV) pytest test -vv --cov=python3 --cov-report=html --cov-fail-under 20 --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
 
 
@@ -35,7 +35,7 @@ black:
 
 pre-commit:
 	@echo "Pre-commit checks"
-	$(VENV) pre-commit run --all-files
+	$(VENV) pre_commit run --all-files
 
 bandit:
 	@echo "Security checks"
@@ -50,7 +50,7 @@ pylint:
 check: mypy test pylint bandit pre-commit
 
 publish: test
-	rm -rf dist && hatch build
+	rm -rf dist && python -m build
 
 mypy:
 	$(VENV) echo $$PYTHONPATH

@@ -15,9 +15,8 @@ jobs:
     - uses: actions/setup-python@v5.1.1
       with:
         python-version: '3.14'
-          # cache: 'pipenv' # caching pipenv dependencies
-    - name: Install package managers
+    - name: Install dependencies
       run: |
-        pip install pipx && pip install uv && pipx install uv && uv sync
+        pip install -e ".[dev]"
     - name: Run Makefile
       run: make check
