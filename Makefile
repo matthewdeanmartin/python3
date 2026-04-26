@@ -53,7 +53,7 @@ publish: test
 	rm -rf dist && python -m build
 
 mypy:
-	$(VENV) echo $$PYTHONPATH
+	echo $$PYTHONPATH
 	$(VENV) mypy python3 --ignore-missing-imports --check-untyped-defs
 
 
