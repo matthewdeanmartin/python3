@@ -52,9 +52,7 @@ def _resolve_versioned(version: str) -> list[str]:
         candidate = shutil.which(f"python{version}")
         if candidate:
             return [candidate]
-        raise FileNotFoundError(
-            f"Could not find py launcher or python{version} on PATH"
-        )
+        raise FileNotFoundError(f"Could not find py launcher or python{version} on PATH")
     candidate = shutil.which(f"python{version}")
     if not candidate:
         raise FileNotFoundError(f"Could not find python{version} on PATH")

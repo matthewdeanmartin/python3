@@ -11,7 +11,6 @@ import pytest
 
 from python3 import __main__ as m
 
-
 ENV_VARS = ("PYTHON3_ALIAS_VENV", "PYTHON3_ALIAS_PYTHON", "PYTHON3_ALIAS_VERSION")
 
 
@@ -200,9 +199,7 @@ def test_run_current_python_passes_args_and_returns_code(monkeypatch):
 
 
 def test_run_current_python_propagates_nonzero(monkeypatch):
-    monkeypatch.setattr(
-        m.subprocess, "run", lambda cmd, env=None: subprocess.CompletedProcess(cmd, 7)
-    )
+    monkeypatch.setattr(m.subprocess, "run", lambda cmd, env=None: subprocess.CompletedProcess(cmd, 7))
     assert m.run_current_python([]) == 7
 
 
