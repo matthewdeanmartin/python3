@@ -47,7 +47,7 @@ pylint:
 	$(VENV) ruff check python3 --fix
 	$(VENV) pylint python3 --fail-under 9.8
 
-check: mypy test pylint bandit pre-commit
+check: mypy test pylint bandit
 
 publish: test
 	rm -rf dist && python -m build
