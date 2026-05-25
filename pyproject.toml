@@ -157,3 +157,5 @@ convention = "google"
 
 [tool.network-status]
 urls = []
+[tool.uv]
+universal = true
