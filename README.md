@@ -74,3 +74,10 @@ PYTHON3_ALIAS_VENV=./.venv python3 -m pip list
 ## Limitations
 
 This alias isn't to replace pyenv, asdf or the like.
+
+## Project Links
+
+- [GitHub](https://github.com/matthewdeanmartin/python3)
+- [PyPI](https://pypi.org/project/python3-alias/)
+- [Bug Tracker](https://github.com/matthewdeanmartin/python3/issues)
+- [Change Log](https://github.com/matthewdeanmartin/python3/blob/main/CHANGELOG.md)
