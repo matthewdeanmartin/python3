@@ -81,3 +81,7 @@ This alias isn't to replace pyenv, asdf or the like.
 - [PyPI](https://pypi.org/project/python3-alias/)
 - [Bug Tracker](https://github.com/matthewdeanmartin/python3/issues)
 - [Change Log](https://github.com/matthewdeanmartin/python3/blob/main/CHANGELOG.md)
+
+## Python 3.15 wheels-only verification — 2026-10-04
+
+Windows Python 3.15.0rc3 and 3.14 pass all 26 tests. uv refuses the intentional reserved console-script name python3; failed uv installs can leave package metadata without its launcher. Final checks used fresh Windows environments and pip wheel installation, verified the actual Scripts/python3.exe launcher, and left system interpreters/global aliases alone. A wheel-only install with python -m pip works in these isolated Windows environments; no claim is made for replacing interpreter-named launchers in POSIX virtualenvs. This is an installer limitation, not a new runtime fix.
