@@ -1,5 +1,4 @@
-"""
-Alias for python3 when other methods for creating an alias are burdensome.
+"""Alias for python3 when other methods for creating an alias are burdensome.
 
 Resolution order for which interpreter to launch:
     1. PYTHON3_ALIAS_VENV    — path to a venv; activates it (PATH/VIRTUAL_ENV) and uses its python

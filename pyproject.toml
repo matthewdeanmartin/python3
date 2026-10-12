@@ -7,16 +7,13 @@ authors = [
 ]
 license = { text = "MIT" }
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 keywords = ["python3", "alias"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -65,7 +62,7 @@ dev = [
 
 [tool.black]
 line-length = 120
-target-version = ['py39']
+target-version = ['py311']
 include = '\.pyi?$'
 exclude = '''
 
@@ -104,6 +101,7 @@ norecursedirs = ["vendor", "scripts"]
 
 
 [tool.ruff]
+lint.ignore = ["RUF100"]  # unused noqa differs across Python versions
 line-length = 320
 
 # Enable Pyflakes `E` and `F` codes by default.
@@ -144,7 +142,7 @@ exclude = [
     "tests_TODO",
     "python3_on_hold"
 ]
-per-file-ignores = { }
+per-file-ignores = { "test/**" = ["D"], "**/__init__.py" = ["D104"] }
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
