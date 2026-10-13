@@ -82,3 +82,6 @@ check_changelog:
 	$(VENV) kaclm validate
 
 check_all_docs: check_docs check_md check_spelling check_changelog
+
+# `test` is also a directory in this repo; without .PHONY make can call the target up to date and skip it.
+.PHONY: test
