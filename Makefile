@@ -65,7 +65,8 @@ make_docs:
 	pdoc python3 --html -o docs --force
 
 check_md:
-	$(VENV) linkcheckMarkdown README.md
+	@echo "Checking documentation build and internal links"
+	uv tool run --no-build --python 3.14 --with 'mkdocs>=1.6,<2' mkdocs build --strict
 	$(VENV) markdownlint README.md --config .markdownlintrc
 	$(VENV) mdformat README.md docs/*.md
 

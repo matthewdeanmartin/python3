@@ -1,0 +1,17 @@
+site_name: python3-alias
+site_url: https://python3-alias.readthedocs.io/en/latest/
+site_description: A python3 command that forwards to the interpreter you select
+repo_url: https://github.com/matthewdeanmartin/python3
+edit_uri: edit/main/docs/
+theme:
+  name: readthedocs
+nav:
+  - Overview: index.md
+  - Installation: installation.md
+  - Interpreter routing: routing.md
+validation:
+  nav:
+    omitted_files: warn
+  links:
+    not_found: warn
+    unrecognized_links: warn

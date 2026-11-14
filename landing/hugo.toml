@@ -1,0 +1,4 @@
+baseURL = 'https://matthewdeanmartin.github.io/python3/'
+locale = 'en-us'
+title = 'python3-alias — point python3 where you mean'
+disableKinds = ['taxonomy', 'term', 'RSS']

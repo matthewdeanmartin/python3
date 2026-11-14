@@ -22,6 +22,8 @@ classifiers = [
 dependencies = []
 
 [project.urls]
+Homepage = "https://matthewdeanmartin.github.io/python3/"
+Documentation = "https://python3-alias.readthedocs.io/en/latest/"
 "Bug Tracker" = "https://github.com/matthewdeanmartin/python3/issues"
 "Change Log" = "https://github.com/matthewdeanmartin/python3/blob/main/CHANGELOG.md"
 

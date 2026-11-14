@@ -16,6 +16,6 @@ __version__ = "1.1.0"
 __description__ = "Hack to deal with a missing python3 alias on Windows"
 __credits__ = [{"name": "Matthew Martin", "email": "matthewdeanmartin@gmail.com"}]
 __readme__ = "README.md"
-__requires_python__ = ">=3.8"
+__requires_python__ = ">=3.11"
 __keywords__ = ["python3", "alias"]
 __status__ = "5 - Production/Stable"

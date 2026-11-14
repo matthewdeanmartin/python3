@@ -8,14 +8,14 @@ PLATFORM_ARCH := $(shell python3 -c "import platform; print(platform.machine())"
 
 ## Installation
 
-To get python3 everywhere and python3 means just some random isolated python3
+To get a standalone `python3` command backed by pipx's isolated interpreter:
 ```bash
 pipx install python3-alias
 ```
 
-To get a known version of python3, install into the system or venv.
+To use a known interpreter, install into an isolated virtual environment with pip. `uv` reserves the `python3` executable name and cannot install this project's console script; do not use `uv sync` to install this package.
 ```bash
-pip install python3-alias
+python -m pip install --only-binary=:all: python3-alias
 ```
 
 ## Motivation
@@ -78,10 +78,12 @@ This alias isn't to replace pyenv, asdf or the like.
 ## Project Links
 
 - [GitHub](https://github.com/matthewdeanmartin/python3)
+- [Homepage](https://matthewdeanmartin.github.io/python3/)
+- [Documentation source](https://github.com/matthewdeanmartin/python3/tree/main/docs)
 - [PyPI](https://pypi.org/project/python3-alias/)
 - [Bug Tracker](https://github.com/matthewdeanmartin/python3/issues)
 - [Change Log](https://github.com/matthewdeanmartin/python3/blob/main/CHANGELOG.md)
 
-## Python 3.15 wheels-only verification — 2026-10-04
+## Installer limitation
 
-Windows Python 3.15.0rc3 and 3.14 pass all 26 tests. uv refuses the intentional reserved console-script name python3; failed uv installs can leave package metadata without its launcher. Final checks used fresh Windows environments and pip wheel installation, verified the actual Scripts/python3.exe launcher, and left system interpreters/global aliases alone. A wheel-only install with python -m pip works in these isolated Windows environments; no claim is made for replacing interpreter-named launchers in POSIX virtualenvs. This is an installer limitation, not a new runtime fix.
+`uv` reserves the `python3` console-script name and refuses to install this package's launcher. Use `pip` or `pipx` in an isolated environment. On POSIX, an existing interpreter-named launcher may take precedence over this package's script.
